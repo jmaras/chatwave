@@ -1,0 +1,97 @@
+﻿@page "/public"
+@using Microsoft.AspNetCore.Connections
+@using Microsoft.AspNetCore.SignalR.Client
+@rendermode InteractiveServer
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavManager
+
+<PageTitle>ChatWave Public Chat</PageTitle>
+
+<AuthorizeView>
+    <Authorized>
+
+<h1>Chat</h1>
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-header">ChatWave Chat</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach (var message in messages)
+                    {
+                        <li class="mb-2">@message</li>
+                    }
+                </ul>
+                <div class="border-primary">
+                    <div class="hstack gap-2 mb-4">
+                        <input type="text" class="form-control w-25" @bind="userName" disabled />
+                        <textarea class="form-control" @bind="message" />
+                    </div>
+                    <button class="btn btn-success" @onclick="Send">Send Message</button>
+                </div>
+            </div>
+            <div class="card-footer">
+                @if (!IsConnected)
+                {
+                    <div class="alert alert-danger">Chat Disconnected</div>
+                }
+                else
+                {
+                    <div class="alert alert-success">Chat Connected</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+    </Authorized>
+    <NotAuthorized>
+        <div class="alert alert-danger">You are not authorized to access this page. <a href="Account/Login" class="alert-link">Log in</a> to continue.</div>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private HubConnection? hubConnection;
+    private List<string> messages = new();
+    private string? userName;
+    private string? message;
+
+    /// <summary>
+    /// Initializes the hub connection and sets up the event handler for receiving messages.
+    /// </summary>
+    protected async override Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity != null && user.Identity.IsAuthenticated)
+        {
+            userName = user.Identity.Name;
+        }
+
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavManager.ToAbsoluteUri("/publicchathub"))
+            .Build();
+
+        hubConnection.On<string, string, DateTime>("ReceiveMessage", (userName, message, dateTime) =>
+        {
+            var concatMessage = $"{dateTime} {userName}: {message}";
+            messages.Add(concatMessage);
+            InvokeAsync(StateHasChanged);
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    /// <summary>
+    /// Gets a value indicating whether the chat connection is currently connected.
+    /// </summary>
+    private bool IsConnected => hubConnection?.State == HubConnectionState.Connected;
+
+    /// <summary>
+    /// Sends a message through the hub connection.
+    /// </summary>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    private Task Send() => hubConnection!.SendAsync("SendMessage", userName, message);
+}

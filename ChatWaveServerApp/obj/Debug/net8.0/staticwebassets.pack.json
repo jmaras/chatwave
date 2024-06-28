@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Julian\\PROJEKTE\\ASP.NET\\ChatWaveServerApp\\ChatWaveServerApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ChatWaveServerApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ChatWaveServerApp.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Julian\\PROJEKTE\\ASP.NET\\ChatWaveServerApp\\ChatWaveServerApp\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Julian\\PROJEKTE\\ASP.NET\\ChatWaveServerApp\\ChatWaveServerApp\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Julian\\PROJEKTE\\ASP.NET\\ChatWaveServerApp\\ChatWaveServerApp\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Julian\\PROJEKTE\\ASP.NET\\ChatWaveServerApp\\ChatWaveServerApp\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ChatWaveServerApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ChatWaveServerApp.props",
+      "PackagePath": "build\\ChatWaveServerApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ChatWaveServerApp.props",
+      "PackagePath": "buildMultiTargeting\\ChatWaveServerApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ChatWaveServerApp.props",
+      "PackagePath": "buildTransitive\\ChatWaveServerApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,96 @@
+﻿@page "/private"
+@using Microsoft.AspNetCore.SignalR.Client
+@rendermode InteractiveServer
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavManager
+
+<PageTitle>Private Chat</PageTitle>
+
+<h1>Private Chat</h1>
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-header">Private Chat</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @if (messages.Count == 0)
+                    {
+                        <li class="mb-2">No messages yet</li>
+                    }
+                    else
+                    {
+                        @foreach (var message in messages)
+                        {
+                            <li class="mb-2">@message</li>
+                        }
+                    }
+                </ul>
+                <div class="border-primary">
+                    <div class="hstack gap-2 mb-4">
+                        <input type="text" class="form-control w-25" placeholder="Recipient UserName" @bind="recipientUserName" />
+                        <textarea class="form-control" placeholder="Type your message here..." @bind="message" />
+                    </div>
+                    <button class="btn btn-success" @onclick="Send">Send Message</button>
+                </div>
+            </div>
+            <div class="card-footer">
+                @if (!IsConnected)
+                {
+                    <div class="alert alert-danger">Chat Disconnected</div>
+                }
+                else
+                {
+                    <div class="alert alert-success">Chat Connected</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private HubConnection? hubConnection;
+    private List<string> messages = new();
+    private string? senderUserName;
+    private string? recipientUserName;
+    private string? message;
+
+    protected async override Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity != null && user.Identity.IsAuthenticated)
+        {
+            senderUserName = user.Identity.Name;
+            Console.WriteLine($"Sender UserName: {senderUserName}");
+        }
+
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavManager.ToAbsoluteUri("/privatechathub"))
+            .Build();
+
+        hubConnection.On<string, string, string, DateTime>("ReceivePrivateMessage", (senderUserName, recipientUserName, message, dateTime) =>
+        {
+            Console.WriteLine($"Message received from {senderUserName} to {recipientUserName}: {message}");
+            if (recipientUserName == this.senderUserName || senderUserName == this.senderUserName)
+            {
+                var concatMessage = $"{dateTime} {senderUserName}: {message}";
+                messages.Add(concatMessage);
+                InvokeAsync(StateHasChanged);
+                Console.WriteLine($"Message added to list: {concatMessage}");
+            }
+        });
+
+        await hubConnection.StartAsync();
+        Console.WriteLine("Hub connection started");
+    }
+
+    private bool IsConnected => hubConnection?.State == HubConnectionState.Connected;
+
+    private Task Send()
+    {
+        Console.WriteLine($"Sending message from {senderUserName} to {recipientUserName}: {message}");
+        return hubConnection!.SendAsync("SendPrivateMessage", senderUserName, recipientUserName, message);
+    }
+}
