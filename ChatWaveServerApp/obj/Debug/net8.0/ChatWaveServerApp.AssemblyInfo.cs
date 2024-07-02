@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChatWaveServerApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72bed23b0d4ce5f67985b1a550401b92ccccecba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc7a194839acd65c29063423fc6ac7bb5cc61d08")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChatWaveServerApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChatWaveServerApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
