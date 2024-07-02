@@ -1,11 +1,17 @@
-﻿@page "/public"
+﻿<!--
+    <summary>
+    Represents the chat component of the application, allowing authorized users to exchange messages in real-time.
+    </summary>
+-->
+
+@page "/chat"
 @using Microsoft.AspNetCore.Connections
 @using Microsoft.AspNetCore.SignalR.Client
 @rendermode InteractiveServer
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavManager
 
-<PageTitle>ChatWave Public Chat</PageTitle>
+<PageTitle>ChatWave - Chat</PageTitle>
 
 <AuthorizeView>
     <Authorized>
@@ -60,6 +66,7 @@
     /// <summary>
     /// Initializes the hub connection and sets up the event handler for receiving messages.
     /// </summary>
+    /// <returns>A task representing the asynchronous operation.</returns>
     protected async override Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
@@ -71,7 +78,7 @@
         }
 
         hubConnection = new HubConnectionBuilder()
-            .WithUrl(NavManager.ToAbsoluteUri("/publicchathub"))
+            .WithUrl(NavManager.ToAbsoluteUri("/chathub"))
             .Build();
 
         hubConnection.On<string, string, DateTime>("ReceiveMessage", (userName, message, dateTime) =>
@@ -93,5 +100,12 @@
     /// Sends a message through the hub connection.
     /// </summary>
     /// <returns>A task representing the asynchronous operation.</returns>
-    private Task Send() => hubConnection!.SendAsync("SendMessage", userName, message);
+    private async Task Send()
+    {
+        if (!string.IsNullOrWhiteSpace(message))
+        {
+            await hubConnection!.SendAsync("SendMessage", userName, message);
+            message = string.Empty; // Clear the message input field
+        }
+    }
 }

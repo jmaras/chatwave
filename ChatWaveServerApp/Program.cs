@@ -66,13 +66,8 @@ app.MapRazorComponents<App>()
 app.MapAdditionalIdentityEndpoints();
 
 /// <summary>
-/// Maps the PublicChatHub to the "/publicchathub" endpoint.
+/// Maps the PublicChatHub to the "/chathub" endpoint.
 /// </summary>
-app.MapHub<PublicChatHub>("/publicchathub");
-/// <summary>
-/// Maps the PrivateChatHub to the "/privatechathub" endpoint.
-/// </summary>
-app.MapHub<PrivateChatHub>("/privatechathub");
-
+app.MapHub<ChatHub>("/chathub");
 
 app.Run();

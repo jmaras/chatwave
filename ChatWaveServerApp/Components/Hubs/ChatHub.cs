@@ -5,7 +5,7 @@ namespace ChatWaveServerApp.Components.Hubs
     /// <summary>
     /// Represents a hub for real-time chat functionality.
     /// </summary>
-    public class PublicChatHub : Hub
+    public class ChatHub : Hub
     {
         /// <summary>
         /// Sends a chat message to all connected clients.
