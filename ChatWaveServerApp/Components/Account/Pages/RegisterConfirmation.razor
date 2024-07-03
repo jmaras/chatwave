@@ -12,16 +12,22 @@
 
 <PageTitle>Register confirmation</PageTitle>
 
-<h1>Register confirmation</h1>
+<h1 class=" h2 text-center">Ready for take-off.</h1>
 
 <StatusMessage Message="@statusMessage" />
 
 @if (emailConfirmationLink is not null)
 {
-    <p>
-        This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-        Normally this would be emailed: <a href="@emailConfirmationLink">Click here to confirm your account</a>
-    </p>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <hr />
+            <p class="text-center">
+                ChatWave does not currently have a real email sender registered. <a href="@emailConfirmationLink">Click here to confirm your account.</a>
+            </p>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
 }
 else
 {

@@ -10,8 +10,15 @@
 
 <PageTitle>Confirm email</PageTitle>
 
-<h1>Confirm email</h1>
-<StatusMessage Message="@statusMessage" />
+<h1 class="h2 text-center">Confirm email</h1>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <hr />
+        <StatusMessage Message="@statusMessage" />
+    </div>
+    <div class="col-md-4"></div>
+</div>
 
 @code {
     private string? statusMessage;

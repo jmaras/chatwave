@@ -16,39 +16,38 @@
 <AuthorizeView>
     <Authorized>
 
-<h1>Chat</h1>
+<h1 class="text-center">ChatWave</h1>
 
 <div class="row">
-    <div class="col-lg-7">
-        <div class="card">
-            <div class="card-header">ChatWave Chat</div>
-            <div class="card-body">
-                <ul class="list-group">
-                    @foreach (var message in messages)
-                    {
-                        <li class="mb-2">@message</li>
-                    }
-                </ul>
-                <div class="border-primary">
-                    <div class="hstack gap-2 mb-4">
-                        <input type="text" class="form-control w-25" @bind="userName" disabled />
-                        <textarea class="form-control" @bind="message" />
-                    </div>
-                    <button class="btn btn-success" @onclick="Send">Send Message</button>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <hr />
+        <div>
+            <ul class="list-group">
+                @foreach (var message in messages)
+                {
+                    <li class="mb-2">@message</li>
+                }
+            </ul>
+            <div class="border-primary">
+                <div class="hstack gap-2 mb-4">
+                    <textarea class="form-control" @bind="message" />
+                    <button class="btn btn-success" @onclick="Send">Send message</button>
                 </div>
             </div>
-            <div class="card-footer">
-                @if (!IsConnected)
-                {
-                    <div class="alert alert-danger">Chat Disconnected</div>
-                }
-                else
-                {
-                    <div class="alert alert-success">Chat Connected</div>
-                }
-            </div>
+        </div>
+        <div>
+            @if (!IsConnected)
+            {
+                <div class="alert alert-danger">Chat disconnected</div>
+            }
+            else
+            {
+                <div class="alert alert-success">Chat connected</div>
+            }
         </div>
     </div>
+    <div class="col-md-4"></div>
 </div>
 
     </Authorized>

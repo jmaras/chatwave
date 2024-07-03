@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mw/y7dNJqRCCeC2+WbejoNdcUY7nmbQmbZxBzQPyCG0=",
+  "Hash": "6vCL8LR/a6vWtLiErlrU0iN416SLtCrGOkrt/4lnBFc=",
   "Source": "ChatWaveServerApp",
   "BasePath": "_content/ChatWaveServerApp",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\Julian\\PROJEKTE\\ASP.NET\\ChatWaveServerApp\\ChatWaveServerApp\\wwwroot\\header.png",
+      "SourceId": "ChatWaveServerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Julian\\PROJEKTE\\ASP.NET\\ChatWaveServerApp\\ChatWaveServerApp\\wwwroot\\",
+      "BasePath": "_content/ChatWaveServerApp",
+      "RelativePath": "header.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\header.png"
     }
   ]
 }

@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\Julian\\PROJEKTE\\ASP.NET\\ChatWaveServerApp\\ChatWaveServerApp\\wwwroot\\header.png",
+      "PackagePath": "staticwebassets\\header.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ChatWaveServerApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

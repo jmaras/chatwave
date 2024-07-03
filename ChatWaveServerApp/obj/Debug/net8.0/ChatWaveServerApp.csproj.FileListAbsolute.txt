@@ -133,6 +133,7 @@ C:\Users\Julian\PROJEKTE\ASP.NET\ChatWaveServerApp\ChatWaveServerApp\obj\Debug\n
 C:\Users\Julian\PROJEKTE\ASP.NET\ChatWaveServerApp\ChatWaveServerApp\obj\Debug\net8.0\ChatWaveServerApp.AssemblyInfo.cs
 C:\Users\Julian\PROJEKTE\ASP.NET\ChatWaveServerApp\ChatWaveServerApp\obj\Debug\net8.0\ChatWaveServerApp.csproj.CoreCompileInputs.cache
 C:\Users\Julian\PROJEKTE\ASP.NET\ChatWaveServerApp\ChatWaveServerApp\obj\Debug\net8.0\ChatWaveServerApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Julian\PROJEKTE\ASP.NET\ChatWaveServerApp\ChatWaveServerApp\obj\Debug\net8.0\ChatWaveServerApp.sourcelink.json
 C:\Users\Julian\PROJEKTE\ASP.NET\ChatWaveServerApp\ChatWaveServerApp\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Julian\PROJEKTE\ASP.NET\ChatWaveServerApp\ChatWaveServerApp\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Julian\PROJEKTE\ASP.NET\ChatWaveServerApp\ChatWaveServerApp\obj\Debug\net8.0\staticwebassets\msbuild.ChatWaveServerApp.Microsoft.AspNetCore.StaticWebAssets.props
